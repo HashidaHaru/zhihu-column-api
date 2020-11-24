@@ -1,0 +1,21 @@
+
+###
+POST http://localhost:8081/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "HXX",
+    "password": "hu123456"
+}
+
+###
+POST http://localhost:8081/user/signup HTTP/1.1
+content-type: application/json
+
+{
+    "username": "HXX",
+    "password": "hu123456",
+    "email":"nvhashida@icloud.com",
+    "nickname":"XIN",
+    "avatar":"http://ss"
+}
