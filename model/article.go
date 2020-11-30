@@ -9,4 +9,6 @@ type Article struct {
 	Short       string `gorm:"type:VARCHAR(300)" json:"short"`
 	Content     string `gorm:"type:VARCHAR(2000)" json:"content"`
 	Title       string `gorm:"type:VARCHAR(100)" json:"title"`
+	AuthorID    uint   `json:"author_id"`
+	ColumnID    uint   `json:"column_id"`
 }

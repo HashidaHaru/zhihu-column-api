@@ -33,5 +33,9 @@ func RunHTTP() {
 	// 删除文章
 	r.POST("/article/delete", handler.ArticleDelete)
 
+	// 点赞
+
+	// 评论
+
 	r.Run(":8081")
 }
