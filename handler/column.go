@@ -1,9 +1,11 @@
 package handler
 
 import (
+	"fmt"
 	"zhihu-column-api/dto"
 	"zhihu-column-api/model"
 	"zhihu-column-api/service"
+	"zhihu-column-api/utils"
 
 	"github.com/gin-gonic/gin"
 )
@@ -15,11 +17,13 @@ func ColumnCreate(c *gin.Context) {
 		errorR(c, bindJSONErrCode, err)
 		return
 	}
-
+	claims, _ := c.Get("claims")
+	m := claims.(*utils.MyCustomClaims)
 	column := model.Column{
 		Cover:       d.Cover,
 		Description: d.Description,
 		Title:       d.Title,
+		AuthorID:    m.UserID,
 	}
 
 	if err := service.ColumnCreate(&column); err != nil {
@@ -54,12 +58,24 @@ func ColumnModify(c *gin.Context) {
 		errorR(c, bindJSONErrCode, err)
 		return
 	}
-	m := model.Column{
-		Cover:       d.Cover,
-		Description: d.Description,
-		Title:       d.Title,
+	// todo 检查专栏作者 id 是否为用户 id
+	claims, _ := c.Get("claims")
+	cm := claims.(*utils.MyCustomClaims)
+	column, err := service.ColumnDetail(d.ColumnID)
+	if err != nil {
+		errorR(c, serviceErrCode, err)
+		return
+
 	}
-	err := service.ColumnModify(d.ColumnID, m)
+	if column.AuthorID != cm.UserID {
+		errorR(c, authorErrCode, fmt.Errorf("权限不足"))
+	}
+	m := model.Column{
+		Cover:       *d.Cover,
+		Description: *d.Description,
+		Title:       *d.Title,
+	}
+	err = service.ColumnModify(d.ColumnID, m)
 	if err != nil {
 		errorR(c, serviceErrCode, err)
 		return

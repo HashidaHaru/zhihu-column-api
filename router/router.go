@@ -11,6 +11,7 @@ import (
 func RunHTTP() {
 	r := gin.Default()
 	r.Use(middleware.Cros())
+	r.Use(middleware.JWTAuth())
 
 	// 登录接口
 	r.POST("/user/login", handler.Login)

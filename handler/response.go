@@ -43,3 +43,6 @@ const bcryptErrCode = 997
 
 // tokenErrCode token 签发错误
 const tokenErrCode = 996
+
+// authorErrCode 作者署名错误
+const authorErrCode = 995

@@ -32,7 +32,7 @@ func SignToken(userID uint) (string, error) {
 }
 
 // ParseToken 解析 token
-func ParseToken(tokenString string) (uint, error) {
+func ParseToken(tokenString string) (*MyCustomClaims, error) {
 
 	token, err := jwt.ParseWithClaims(tokenString, &MyCustomClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return mySigningKey, nil
@@ -40,8 +40,8 @@ func ParseToken(tokenString string) (uint, error) {
 
 	if claims, ok := token.Claims.(*MyCustomClaims); ok && token.Valid {
 		fmt.Printf("%v %v", claims.UserID, claims.StandardClaims.ExpiresAt)
-		return claims.UserID, nil
+		return claims, nil
 	}
-	return 0, err
+	return nil, err
 
 }

@@ -19,7 +19,7 @@ func JWTAuth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-		_, err := utils.ParseToken(tokenString)
+		claims, err := utils.ParseToken(tokenString)
 
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{
@@ -29,7 +29,7 @@ func JWTAuth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-
+		c.Set("claims", claims)
 		c.Next()
 
 		// after request

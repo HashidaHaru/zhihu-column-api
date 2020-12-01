@@ -1,5 +1,5 @@
 
-###
+### 登录
 POST http://localhost:8081/user/login HTTP/1.1
 content-type: application/json
 
@@ -8,7 +8,7 @@ content-type: application/json
     "password": "hu123456"
 }
 
-###
+### 注册
 POST http://localhost:8081/user/signup HTTP/1.1
 content-type: application/json
 
@@ -18,4 +18,47 @@ content-type: application/json
     "email":"nvhashida@icloud.com",
     "nickname":"XIN",
     "avatar":"http://ss"
+}
+
+### 创建专栏
+POST http://localhost:8081/column/create HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "cover":"ads",
+    "description":"心如止水",
+    "title":"Harmony"
+}
+
+### 查看我的专栏信息
+POST http://localhost:8081/column/detail HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "column_id": 2
+}
+
+### 修改专栏
+
+POST http://localhost:8081/column/modify HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "column_id": 2,
+    "cover": "jpg",
+    "description": "心如止水",
+    "title": "Harmony"
+
+}
+
+### 发现专栏
+POST http://localhost:8081/column/discover HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "page":1
 }
