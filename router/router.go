@@ -11,12 +11,11 @@ import (
 func RunHTTP() {
 	r := gin.Default()
 	r.Use(middleware.Cros())
-	r.Use(middleware.JWTAuth())
-
 	// 登录接口
 	r.POST("/user/login", handler.Login)
 	// 注册接口
 	r.POST("/user/signup", handler.Signup)
+	r.Use(middleware.JWTAuth())
 
 	// 创建专栏
 	r.POST("/column/create", handler.ColumnCreate)

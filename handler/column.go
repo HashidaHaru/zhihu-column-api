@@ -71,9 +71,9 @@ func ColumnModify(c *gin.Context) {
 		errorR(c, authorErrCode, fmt.Errorf("权限不足"))
 	}
 	m := model.Column{
-		Cover:       *d.Cover,
-		Description: *d.Description,
-		Title:       *d.Title,
+		Cover:       d.Cover,
+		Description: d.Description,
+		Title:       d.Title,
 	}
 	err = service.ColumnModify(d.ColumnID, m)
 	if err != nil {

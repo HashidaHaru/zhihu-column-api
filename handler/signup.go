@@ -26,7 +26,6 @@ func Signup(c *gin.Context) {
 	user := model.User{
 		Username: v.Username,
 		Password: string(hash),
-		Avatar:   v.Avatar,
 	}
 
 	if err := service.UserAdd(&user); err != nil {

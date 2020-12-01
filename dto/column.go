@@ -14,10 +14,10 @@ type ColumnDetail struct {
 
 // ColumnModify 修改专栏
 type ColumnModify struct {
-	ColumnID    uint    `json:"column_id" binding:"required"`
-	Cover       *string `json:"cover" binding:"required"`
-	Description *string `json:"description" binding:"required"`
-	Title       *string `json:"title" binding:"required"`
+	ColumnID    uint   `json:"column_id" binding:"required"`
+	Cover       string `json:"cover" binding:"required"`
+	Description string `json:"description" binding:"required"`
+	Title       string `json:"title" binding:"required"`
 }
 
 // ColumnDiscover 发现专栏
