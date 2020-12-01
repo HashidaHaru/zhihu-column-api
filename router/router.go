@@ -26,12 +26,12 @@ func RunHTTP() {
 	// 发现专栏
 	r.POST("/column/discover", handler.ColumnDiscover)
 
-	// 创建文章
-	r.POST("/article/create", handler.ArticleCreate)
-	// 修改文章
-	r.POST("/article/modify", handler.ArticleModify)
-	// 删除文章
-	r.POST("/article/delete", handler.ArticleDelete)
+	// // 创建文章
+	// r.POST("/article/create", handler.ArticleCreate)
+	// // 修改文章
+	// r.POST("/article/modify", handler.ArticleModify)
+	// // 删除文章
+	// r.POST("/article/delete", handler.ArticleDelete)
 
 	// 点赞
 
