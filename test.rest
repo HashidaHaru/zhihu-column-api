@@ -14,9 +14,22 @@ content-type: application/json
 
 {
     "username": "HXX",
-    "password": "hu123456",
+    "password": "hu123456"
+}
+
+### 用户详情
+POST http://localhost:8081/user/detail HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+### 修改用户信息
+POST http://localhost:8081/user/modify HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
     "email":"nvhashida@icloud.com",
-    "nickname":"XIN",
+    "nickname":"XIN2020",
     "avatar":"http://ss"
 }
 
@@ -29,6 +42,16 @@ content-type: application/json
     "cover":"ads",
     "description":"心如止水",
     "title":"Harmony"
+}
+
+### 获取我的专栏列表
+
+POST http://localhost:8081/column/list HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "page": 2
 }
 
 ### 查看我的专栏信息
@@ -61,4 +84,57 @@ content-type: application/json
 
 {
     "page":1
+}
+
+### 创建文章
+POST http://localhost:8081/article/create HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "header_image":"asd",
+    "short":"xxx",
+    "content":"asx",
+    "title":"create article",
+    "column_id":2
+}
+
+### 文章列表
+POST http://localhost:8081/article/list HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "page": 1
+}
+
+### 文章详情
+POST http://localhost:8081/article/detail HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "article_id": 1
+}
+
+### 修改文章
+POST http://localhost:8081/article/modify HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "article_id":1,
+    "header_image":"modify",
+    "short":"modify",
+    "content":"modify",
+    "title":"modify article"
+}
+
+### 删除文章
+POST http://localhost:8081/article/delete HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+content-type: application/json
+
+{
+    "article_id": 1
 }

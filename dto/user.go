@@ -11,3 +11,10 @@ type LoginDto struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
+
+// UserModify 修改用户信息
+type UserModify struct {
+	Email    string `json:"email" binding:"required"`
+	Nickname string `json:"nickname" binding:"required"`
+	Avatar   string `json:"avatar" binding:"required"`
+}

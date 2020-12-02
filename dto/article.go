@@ -14,6 +14,11 @@ type ArticleDetail struct {
 	ArticleID uint `json:"article_id" binding:"required"`
 }
 
+// ArticleList 文章列表
+type ArticleList struct {
+	Page int `json:"page" binding:"required"`
+}
+
 // ArticleModify 修改文章
 type ArticleModify struct {
 	ArticleID   uint   `json:"article_id" binding:"required"`

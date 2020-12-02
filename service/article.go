@@ -1,6 +1,7 @@
 package service
 
 import (
+	"errors"
 	"zhihu-column-api/db"
 	"zhihu-column-api/model"
 )
@@ -22,15 +23,26 @@ type Detail struct {
 	ColumnID       uint   `json:"column_id"`
 }
 
+// ArticleList 文章列表
+func ArticleList(id uint, page int) ([]model.Article, error) {
+	list := make([]model.Article, 0)
+	err := db.DB.Where("author_id = ?", id).Limit(10).Offset((page - 1) * 10).Find(&list).Error
+	return list, err
+}
+
 // ArticleDetail 文章详情
 func ArticleDetail(id uint) (Detail, error) {
 	var a Detail
-	err := db.DB.Table("articles").
+	sql := db.DB.Table("articles").
 		Select("articles.*,users.avatar AS author_avatar,users.nickname AS author_nickname").
 		Joins("LEFT JOIN users ON articles.author_id = users.id ").
-		Where("articles.id = ?", id).
-		Find(&a).Error
-
+		Where("articles.id = ? AND articles.deleted_at IS NULL", id).
+		Find(&a)
+	affected := sql.RowsAffected
+	if affected == 0 {
+		return a, errors.New("article not found")
+	}
+	err := sql.Error
 	return a, err
 }
 

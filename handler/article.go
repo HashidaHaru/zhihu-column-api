@@ -36,6 +36,24 @@ func ArticleCreate(c *gin.Context) {
 	successR(c, a.ID)
 }
 
+// ArticleList 文章列表
+func ArticleList(c *gin.Context) {
+	var d dto.ArticleList
+	if err := c.ShouldBindJSON(&d); err != nil {
+		errorR(c, bindJSONErrCode, err)
+		return
+	}
+	claims, _ := c.Get("claims")
+	cm := claims.(*utils.MyCustomClaims)
+	list, err := service.ArticleList(cm.UserID, d.Page)
+	if err != nil {
+		errorR(c, serviceErrCode, err)
+		return
+
+	}
+	successR(c, list)
+}
+
 // ArticleDetail 文章详情
 func ArticleDetail(c *gin.Context) {
 	var d dto.ArticleDetail

@@ -35,20 +35,22 @@ func ColumnCreate(c *gin.Context) {
 
 }
 
-// ColumnDetail 专栏详情
-func ColumnDetail(c *gin.Context) {
-	var d dto.ColumnDetail
+// ColumnList 查看我的专栏列表
+func ColumnList(c *gin.Context) {
+	var d dto.ColumnList
 	if err := c.ShouldBindJSON(&d); err != nil {
 		errorR(c, bindJSONErrCode, err)
 		return
 	}
-	column, err := service.ColumnDetail(d.ColumnID)
+	claims, _ := c.Get("claims")
+	cm := claims.(*utils.MyCustomClaims)
+	list, err := service.ColumnList(cm.UserID, d.Page)
 	if err != nil {
 		errorR(c, serviceErrCode, err)
 		return
 
 	}
-	successR(c, column)
+	successR(c, list)
 }
 
 // ColumnModify 修改专栏

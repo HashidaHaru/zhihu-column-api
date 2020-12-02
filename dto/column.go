@@ -7,9 +7,9 @@ type ColumnCreate struct {
 	Title       string `json:"title" binding:"required"`
 }
 
-// ColumnDetail 专栏详情
-type ColumnDetail struct {
-	ColumnID uint `json:"column_id" binding:"required"`
+// ColumnList 查看我的专栏列表
+type ColumnList struct {
+	Page int `json:"page" binding:"required"`
 }
 
 // ColumnModify 修改专栏

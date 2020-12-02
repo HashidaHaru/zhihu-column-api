@@ -20,3 +20,16 @@ func FindUserByUsername(username string) (*model.User, error) {
 func UserAdd(m *model.User) error {
 	return db.DB.Create(m).Error
 }
+
+// UserDetail 用户详情
+func UserDetail(id uint) (*model.User, error) {
+	user := model.User{}
+	user.ID = id
+	err := db.DB.First(&user).Error
+	return &user, err
+}
+
+// UserModify 修改用户详情
+func UserModify(id uint, m model.User) error {
+	return db.DB.Model(&model.User{}).Where("id = ?", id).Updates(m).Error
+}

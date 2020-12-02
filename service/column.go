@@ -10,6 +10,13 @@ func ColumnCreate(column *model.Column) error {
 	return db.DB.Create(column).Error
 }
 
+// ColumnList 查看我的专栏列表
+func ColumnList(id uint, page int) ([]model.Column, error) {
+	list := make([]model.Column, 0)
+	err := db.DB.Where("author_id= ? ", id).Limit(10).Offset((page - 1) * 10).Find(&list).Error
+	return list, err
+}
+
 // ColumnDetail 专栏详情
 func ColumnDetail(id uint) (*model.Column, error) {
 	column := model.Column{}
@@ -39,6 +46,6 @@ func ColumnDiscover(page int) ([]DiscoverColumn, error) {
 	err := db.DB.Table("columns").
 		Select("columns.*,users.avatar AS author_avatar,users.nickname AS author_nickname").
 		Joins("LEFT JOIN users ON columns.author_id = users.id ").
-		Find(&list).Limit(10).Offset(page).Error
+		Limit(10).Offset((page - 1) * 10).Find(&list).Error
 	return list, err
 }
