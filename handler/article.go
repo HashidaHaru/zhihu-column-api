@@ -43,9 +43,7 @@ func ArticleList(c *gin.Context) {
 		errorR(c, bindJSONErrCode, err)
 		return
 	}
-	claims, _ := c.Get("claims")
-	cm := claims.(*utils.MyCustomClaims)
-	list, err := service.ArticleList(cm.UserID, d.Page)
+	list, err := service.ArticleList(d.ColumnID, d.Page)
 	if err != nil {
 		errorR(c, serviceErrCode, err)
 		return

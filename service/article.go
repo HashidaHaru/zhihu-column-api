@@ -26,7 +26,7 @@ type Detail struct {
 // ArticleList 文章列表
 func ArticleList(id uint, page int) ([]model.Article, error) {
 	list := make([]model.Article, 0)
-	err := db.DB.Where("author_id = ?", id).Limit(10).Offset((page - 1) * 10).Find(&list).Error
+	err := db.DB.Where("column_id = ?  ", id).Limit(10).Offset((page - 1) * 10).Find(&list).Error
 	return list, err
 }
 

@@ -16,7 +16,8 @@ type ArticleDetail struct {
 
 // ArticleList 文章列表
 type ArticleList struct {
-	Page int `json:"page" binding:"required"`
+	ColumnID uint `json:"column_id" binding:"required"`
+	Page     int  `json:"page" binding:"required"`
 }
 
 // ArticleModify 修改文章

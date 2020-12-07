@@ -35,7 +35,7 @@ content-type: application/json
 
 ### 创建专栏
 POST http://localhost:8081/column/create HTTP/1.1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDcyMjI4NzIsImlzcyI6InRlc3QifQ.UzLmUl1Lbd4CW19wXH9Nznou8Lp2X2qev_z6IzcFGJE
 content-type: application/json
 
 {
@@ -47,11 +47,11 @@ content-type: application/json
 ### 获取我的专栏列表
 
 POST http://localhost:8081/column/list HTTP/1.1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NjE1MTgsImlzcyI6InRlc3QifQ.-c9BZ5AT_mqFI2skzMEJvUx0vvmr5nqhvrnIDqQ8tEE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDcyMjI4NzIsImlzcyI6InRlc3QifQ.UzLmUl1Lbd4CW19wXH9Nznou8Lp2X2qev_z6IzcFGJE
 content-type: application/json
 
 {
-    "page": 2
+    "page": 1
 }
 
 ### 查看我的专栏信息
