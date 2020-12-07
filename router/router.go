@@ -25,7 +25,7 @@ func RunHTTP() {
 	// 创建专栏
 	r.POST("/column/create", handler.ColumnCreate)
 	// 查看我的专栏列表
-	r.POST("/column/list", handler.ColumnList)
+	r.POST("/column/all", handler.ColumnAll)
 	// 修改我的专栏信息
 	r.POST("/column/modify", handler.ColumnModify)
 	// 发现专栏

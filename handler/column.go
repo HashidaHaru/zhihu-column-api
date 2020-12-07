@@ -35,16 +35,12 @@ func ColumnCreate(c *gin.Context) {
 
 }
 
-// ColumnList 查看我的专栏列表
-func ColumnList(c *gin.Context) {
-	var d dto.ColumnList
-	if err := c.ShouldBindJSON(&d); err != nil {
-		errorR(c, bindJSONErrCode, err)
-		return
-	}
+// ColumnAll 查看我的专栏列表
+func ColumnAll(c *gin.Context) {
+
 	claims, _ := c.Get("claims")
 	cm := claims.(*utils.MyCustomClaims)
-	list, err := service.ColumnList(cm.UserID, d.Page)
+	list, err := service.ColumnAll(cm.UserID)
 	if err != nil {
 		errorR(c, serviceErrCode, err)
 		return

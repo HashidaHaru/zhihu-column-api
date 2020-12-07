@@ -10,10 +10,10 @@ func ColumnCreate(column *model.Column) error {
 	return db.DB.Create(column).Error
 }
 
-// ColumnList 查看我的专栏列表
-func ColumnList(id uint, page int) ([]model.Column, error) {
+// ColumnAll 查看我的专栏列表
+func ColumnAll(id uint) ([]model.Column, error) {
 	list := make([]model.Column, 0)
-	err := db.DB.Where("author_id= ? ", id).Limit(10).Offset((page - 1) * 10).Find(&list).Error
+	err := db.DB.Where("author_id= ? ", id).Find(&list).Error
 	return list, err
 }
 
