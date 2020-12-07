@@ -53,6 +53,7 @@ func Signup(c *gin.Context) {
 	user := model.User{
 		Username: v.Username,
 		Password: string(hash),
+		Email:    v.Email,
 	}
 
 	if err := service.UserAdd(&user); err != nil {
@@ -85,7 +86,7 @@ func UserModify(c *gin.Context) {
 	claims, _ := c.Get("claims")
 	cm := claims.(*utils.MyCustomClaims)
 	m := model.User{
-		Email:    &d.Email,
+		Email:    d.Email,
 		Nickname: &d.Nickname,
 		Avatar:   &d.Avatar,
 	}

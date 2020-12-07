@@ -3,6 +3,7 @@ package dto
 // SignupDto 注册
 type SignupDto struct {
 	Username string `json:"username" binding:"required"`
+	Email    string `json:"email" binding:"required"`
 	Password string `json:"password" binding:"required"`
 }
 
