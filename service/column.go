@@ -32,6 +32,7 @@ func ColumnModify(id uint, m model.Column) error {
 
 // DiscoverColumn 发现专栏列表
 type DiscoverColumn struct {
+	ID             uint   `json:"id" binding:"required"`
 	Cover          string `json:"cover"`
 	Description    string `json:"description"`
 	Title          string `json:"title"`
